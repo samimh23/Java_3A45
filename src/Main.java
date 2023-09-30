@@ -10,7 +10,8 @@ public class Main {
         Animal Tuna =new Animal("Fish","yo",2,true);
         Animal Elephant=new Animal("mamal","sars",2,true);
 
-        Zoo myzoo =new Zoo("myZoo","Belvedaire",25);
+        Zoo myzoo =new Zoo("myZoo","Belvedaire");
+        Zoo myzoo1 =new Zoo("myzoo1","Ariana");
 
 
         //addd animals
@@ -31,6 +32,11 @@ public class Main {
         System.out.println(myzoo.removeAnimal(lion));
         //Dispaly of the chenges
         System.out.println(myzoo.toString());
+        System.out.println(myzoo.isZooFull(myzoo));
+        System.out.println();
+        System.out.println(myzoo.comparerZoo(myzoo,myzoo1));
+
+
 
 
 

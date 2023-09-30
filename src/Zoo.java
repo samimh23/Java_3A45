@@ -4,28 +4,22 @@ public class Zoo {
     Animal [] animals;
     String name;
     String City;
-    int nbrCages;
+    final int nbrCages=25;
 
     int nbranimaux;
+
+
 
     public Zoo (){
 
     }
-    public Zoo(String name,String City,int nbrCages){
+
+    public Zoo(String name,String City){
 
 
         animals= new Animal[nbrCages];
         this.name=name;
         this.City=City;
-        if(nbrCages<=25){
-            this.nbrCages=nbrCages;
-
-        }else {
-            throw new IllegalArgumentException("nbr of cages must be 25 or under ");
-
-
-        }
-
         this.nbranimaux=0;
     }
 
@@ -56,7 +50,7 @@ public class Zoo {
     int searchAnimal(Animal animal) {
         for (int i = 0; i < nbranimaux; i++) {
 
-            if (animals[i].equals(animal)) {
+            if (animals[i].name.equals(animal.name)) {
                 return i;
             }
 
@@ -97,6 +91,31 @@ public class Zoo {
         animals[nbranimaux]= null;
         nbranimaux--;
         return true;
+
+    }
+
+    boolean isZooFull(Zoo z1){
+        if(z1.nbranimaux==z1.nbrCages){
+            return true;
+
+
+        }
+        else {
+            int x=z1.nbrCages-z1.nbranimaux;
+            System.out.println("there is " + x +"places left");
+            return false;
+        }
+
+
+
+    }
+    Zoo comparerZoo(Zoo z1, Zoo z2){
+       if(z1.nbranimaux> z2.nbranimaux){
+        return z1;
+       }else {
+           return z2;
+       }
+
 
     }
 
