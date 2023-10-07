@@ -1,24 +1,48 @@
-import java.util.Arrays;
+package tn.esprit.gestionzoo.main.entites;
+import java.util.Objects;
 
 public class Zoo {
     Animal [] animals;
-    String name;
-    String City;
+   private String name;
+
+
+   private String City;
     final int nbrCages=25;
 
     int nbranimaux;
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        if (Objects.equals(name, "")){
+            throw new IllegalArgumentException("enter an name");
+        }
+        else {
+            this.name = name;
+        }
+
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
 
     public Zoo (){
 
     }
 
-    public Zoo(String name,String City){
+
+    public Zoo(String name, String City){
 
 
         animals= new Animal[nbrCages];
-        this.name=name;
+        setName(name);
         this.City=City;
         this.nbranimaux=0;
     }
@@ -47,10 +71,10 @@ public class Zoo {
 
         return sb.toString();
     }
-    int searchAnimal(Animal animal) {
+   public int searchAnimal(Animal animal) {
         for (int i = 0; i < nbranimaux; i++) {
 
-            if (animals[i].name.equals(animal.name)) {
+            if (animals[i].getName().equals(animal.getName())) {
                 return i;
             }
 
@@ -62,25 +86,23 @@ public class Zoo {
 
     }
 
-    boolean addAnimal(Animal animal) {
+   public boolean addAnimal(Animal animal , Zoo z) {
 
-       if (nbranimaux<nbrCages && searchAnimal(animal)==-1 ){
+       if (isZooFull(z) || searchAnimal(animal)!=-1){
 
-           animals[nbranimaux]=animal;
-           System.out.println("the animal is added sucefuly");
-           nbranimaux++;
-           return true;
-
-       }
-           
-        else {
-           System.out.println("there is no place for this animal or  this animal already exist");
            return false;
+
        }
+        animals[nbranimaux]=animal;
+        System.out.println("the animal is added sucefuly");
+        nbranimaux++;
+        return true;
+           
+
 
     }
 
-    boolean removeAnimal(Animal animal){
+    public boolean removeAnimal(Animal animal){
 
         if (searchAnimal(animal) == -1){
             return false;
@@ -94,22 +116,21 @@ public class Zoo {
 
     }
 
-    boolean isZooFull(Zoo z1){
+    public boolean isZooFull(Zoo z1){
         if(z1.nbranimaux==z1.nbrCages){
             return true;
 
 
         }
-        else {
+
             int x=z1.nbrCages-z1.nbranimaux;
-            System.out.println("there is " + x +"places left");
             return false;
-        }
+
 
 
 
     }
-    Zoo comparerZoo(Zoo z1, Zoo z2){
+   public Zoo comparerZoo(Zoo z1, Zoo z2){
        if(z1.nbranimaux> z2.nbranimaux){
         return z1;
        }else {
