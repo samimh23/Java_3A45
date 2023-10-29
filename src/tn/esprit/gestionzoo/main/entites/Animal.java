@@ -26,14 +26,14 @@ public class Animal {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age)  {
         if (age>0){
             this.age = age;
 
         }
         else {
 
-            throw new IllegalArgumentException("age must be positve");
+            System.out.println("age ");
         }
 
     }
@@ -53,7 +53,7 @@ public class Animal {
     public Animal(String Family, String name ,int age ,Boolean isMammal)
     { this.Family=Family;
         this.name=name;
-        setAge(age);
+        this.age=age;
         this.isMammal=isMammal;
 
 

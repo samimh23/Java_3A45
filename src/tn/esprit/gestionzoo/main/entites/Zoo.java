@@ -10,9 +10,9 @@ public class Zoo  {
 
 
    private String City;
-    final int nbrCages=25;
+    final int nbrCages=3;
 
-    int nbranimaux;
+     public int nbranimaux;
     int nbr_aqu_anim;
 
 
@@ -20,7 +20,7 @@ public class Zoo  {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)  {
         if (Objects.equals(name, "")){
             throw new IllegalArgumentException("enter an name");
         }
@@ -95,21 +95,27 @@ public class Zoo  {
 
     }
 
-   public boolean addAnimal(Animal animal , Zoo z) {
+   public void addAnimal(Animal animal ) throws ZooFullException,InvalidAgeException {
 
-       if (isZooFull(z) || searchAnimal(animal)!=-1){
-
-           return false;
+            if(isZooFull()){
+                throw new ZooFullException("zoo is full");
 
        }
-        animals[nbranimaux]=animal;
-        System.out.println("the animal is added sucefuly");
-        nbranimaux++;
-        return true;
+        if (animal.getAge() < 0) {
+           throw new InvalidAgeException("Animal age cannot be negative.");
+       }
+
+
+
+           animals[nbranimaux]=animal;
+           System.out.println("the animal is added sucefuly");
+           nbranimaux++;
+        }
+
            
 
 
-    }
+
 
     public boolean removeAnimal(Animal animal){
 
@@ -125,16 +131,9 @@ public class Zoo  {
 
     }
 
-    public boolean isZooFull(Zoo z1){
-        if(z1.nbranimaux==z1.nbrCages){
-            return true;
+    public boolean isZooFull(){
 
-
-        }
-
-            int x=z1.nbrCages-z1.nbranimaux;
-            return false;
-
+            return nbranimaux==nbrCages;
 
 
 
@@ -156,6 +155,7 @@ public class Zoo  {
             System.out.println("added succesfuly");
 
         }
+
         else
         {
             System.out.println("is full ");
