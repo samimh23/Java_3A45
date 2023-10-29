@@ -1,4 +1,4 @@
-package tn.esprit.gestionzoo.main;
+package tn.esprit.gestionzoo.main.main;
 import tn.esprit.gestionzoo.main.entites.*;
 
 
@@ -15,12 +15,36 @@ public class Main {
         Zoo myzoo =new Zoo("myZoo","Belvedaire");
         Zoo myzoo1 =new Zoo("myzoo1","Ariana");
 
+        Aquatic dolphin = new Dolphin("Fish", "Sardine", 2, true, "Sea",48.9f);
+        Terrestrial terrestrial = new Terrestrial("Panda", "Narla", 4, true, 2);
+        //Dolphin dolphin = new Dolphin("Delphinidae", "Flipper", 5, true, "Ocean", 14.5f);
+        Aquatic penguin = new Penguin("Spheniscidae", "Skipper", 3, true, "Ocean", 25.3f);
+        myzoo.addAquaticAnimal(dolphin);
+        myzoo.addAquaticAnimal(penguin);
+
+
+
+        dolphin.swim();
+        penguin.swim();
+        myzoo.maxPenguinSwimmingDepth(penguin);
+        
+
+       /* System.out.println(aquatic);
+        System.out.println(terrestrial);
+        System.out.println(dolphin);
+        System.out.println(penguin);
+        aquatic.swim();
+        dolphin.swim();
+        penguin.swim();*/
+
+
 
         //addd animals
 
-        myzoo.addAnimal(lion,myzoo);
+       /* myzoo.addAnimal(lion,myzoo);
         myzoo.addAnimal(Tuna,myzoo);
         myzoo.addAnimal(Elephant,myzoo);
+        myzoo.addAnimal(penguin,myzoo);
 
         //adding an already existing animal
         System.out.println(myzoo.addAnimal(Elephant1,myzoo));
@@ -36,7 +60,8 @@ public class Main {
         System.out.println(myzoo);
         System.out.println(myzoo.isZooFull(myzoo));
         System.out.println();
-        System.out.println(myzoo.comparerZoo(myzoo,myzoo1));
+        System.out.println(myzoo.comparerZoo(myzoo,myzoo1));*/
+
 
 
 

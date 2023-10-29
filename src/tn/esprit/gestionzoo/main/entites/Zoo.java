@@ -1,8 +1,11 @@
 package tn.esprit.gestionzoo.main.entites;
 import java.util.Objects;
 
-public class Zoo {
+public class Zoo  {
     Animal [] animals;
+    Aquatic[] aquaticAnimals ;
+
+
    private String name;
 
 
@@ -10,6 +13,8 @@ public class Zoo {
     final int nbrCages=25;
 
     int nbranimaux;
+    int nbr_aqu_anim;
+
 
     public String getName() {
         return name;
@@ -42,6 +47,7 @@ public class Zoo {
 
 
         animals= new Animal[nbrCages];
+        aquaticAnimals= new Aquatic[10];
         setName(name);
         this.City=City;
         this.nbranimaux=0;
@@ -67,6 +73,9 @@ public class Zoo {
 
         for (int i = 0; i < nbranimaux; i++) {
             sb.append(animals[i]).append("\n");
+        }
+        for (int i = 0; i < nbr_aqu_anim; i++) {
+            sb.append(aquaticAnimals[i]).append("\n");
         }
 
         return sb.toString();
@@ -139,6 +148,59 @@ public class Zoo {
 
 
     }
+
+    public void addAquaticAnimal(Aquatic aquatic){
+        if (nbr_aqu_anim<10)
+        { aquaticAnimals[nbr_aqu_anim]=aquatic;
+            nbr_aqu_anim++;
+            System.out.println("added succesfuly");
+
+        }
+        else
+        {
+            System.out.println("is full ");
+        }
+
+
+
+    }
+    public float maxPenguinSwimmingDepth(  ){
+
+        float max=0;
+        for (int i=0; i<nbr_aqu_anim;i++){
+            if(aquaticAnimals[i] instanceof Penguin   ){
+                Penguin penguin =(Penguin) aquaticAnimals[i];
+                float swimmingDepth = penguin.getSwimmingDepth();
+                if(swimmingDepth>max){
+                    max=swimmingDepth;
+                }
+            }
+
+        }
+
+        return max;
+    }
+
+    public void displayNumberOfAquaticsByType(){
+        int nbrpenguin=0;
+        int nbrdoplhin=0;
+        for(int i=0 ; i<nbr_aqu_anim;i++){
+            if(aquaticAnimals[i] instanceof Penguin   ){
+                nbrpenguin++;
+            }
+            else
+            {
+                nbrdoplhin++;
+            }
+
+
+        }
+        System.out.println("nombre de penguin: " + nbrdoplhin);
+        System.out.println("nombre de penguin: " + nbrpenguin);
+    }
+
+
+
 
 
 }
