@@ -2,7 +2,7 @@ package tn.esprit.gestionzoo.main.entites;
 
 import java.util.Objects;
 
-public abstract   class Aquatic extends Animal {
+public  abstract   class Aquatic extends Animal implements Carnivore<Food>  {
 
     protected String habitat;
 
@@ -44,5 +44,10 @@ public abstract   class Aquatic extends Animal {
     }
 
     public abstract void swim();
+
+    @Override
+    public void eatMeat(Food meat) {
+
+    }
 
 }
