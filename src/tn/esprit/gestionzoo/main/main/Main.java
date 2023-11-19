@@ -58,12 +58,10 @@ public class Main {
         aquatic.eatMeat(Food.MEAT);
 
 
-        // Create a Penguin object
         Penguin penguin12 = new Penguin("Pen", "dhd", 3, true, "tunis", 17.5f);
         penguin12.eatMeat(Food.MEAT);
         penguin12.swim();
 
-        // Create a Terrestrial object
         Terrestrial terrestrial12 = new Terrestrial("Yekel", "hmed", 5, true, 10);
         terrestrial12.eatMeat(Food.MEAT);
         terrestrial12.eatPlantAndMeet(Food.BOTH);
